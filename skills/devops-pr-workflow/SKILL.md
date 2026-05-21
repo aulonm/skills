@@ -1,6 +1,6 @@
 ---
 name: devops-pr-workflow
-description: Aulon's komplette workflow for oppgaver fra Azure DevOps til pushet PR. Bruk denne ALLTID når du jobber med en DevOps-ticket (AB#nummer eller lenke til dev.azure.com), når du skal lage en branch/commit/PR i et OBOS-repo, eller når du skal oppdatere et work item i DevOps. Dekker hele flyten: lese ticket, plan, branching (krever godkjenning), commits, draft PR via GitHub MCP, oppdatering av work item til "Fagfellevurdering". Bruker tone-of-voice-skillen for all tekst som blir postet under Aulons navn.
+description: Aulon's komplette workflow for oppgaver fra Azure DevOps til pushet PR. Bruk denne ALLTID når du jobber med en DevOps-ticket (AB#nummer eller lenke til dev.azure.com), når du skal lage en branch/commit/PR i et OBOS-repo, eller når du skal oppdatere et work item i DevOps. Dekker hele flyten: lese ticket, plan, branching (krever godkjenning), commits, draft PR via GitHub MCP, oppdatering av work item til "Fagfellevurdering". Bruker `aulon-tone-of-voice`-skillen for all tekst som blir postet under Aulons navn — les den skillen samtidig som denne.
 ---
 
 # DevOps + PR Workflow
@@ -63,7 +63,7 @@ Bruk `mcp__github__create_pull_request`. Start ALLTID som **draft**.
 Skriv tittel og beskrivelse på **norsk (bokmål)**, etter `aulon-tone-of-voice`. Tekniske termer som _border_, _commit_, _branch_ etc. oversettes ikke.
 
 ### Tittel
-Kort, beskrivende, imperativ form, ~60 tegn. Ikke bruk prefiks som `feat:` eller `fix:` med mindre repoet bruker conventional commits konsekvent. Bruk tone-of-voice-konvensjoner: lowercase OK, "funker" ikke "fungerer", scope-prefiks (`medlemsbonus:`, `sanity:`) når nyttig.
+Kort, beskrivende, imperativ form, ~60 tegn. Ikke bruk prefiks som `feat:` eller `fix:` med mindre repoet bruker conventional commits konsekvent. Bruk konvensjonene fra `aulon-tone-of-voice`: lowercase OK, "funker" ikke "fungerer", scope-prefiks (`medlemsbonus:`, `sanity:`) når nyttig.
 
 ### Body
 
@@ -83,9 +83,15 @@ Hvis et ticketnummer finnes, lenk til det: `Løser AB#<nummer>`.
 
 - Kun hvis det er gjenstående arbeid, TODO-kommentarer, eller kjente begrensninger.
 - Hvis ingenting gjenstår, **utelat hele seksjonen**.
+
+---
+
+🤖 _Laget med Claude Code og kvalitetssikret av Aulon. Deler av teksten kan være skrevet eller redigert personlig av Aulon._
 ```
 
 **Hvordan skrive innenfor malen:** Bruk `aulon-tone-of-voice` i hver seksjon. "Oppsummering" skal høres ut som Aulon som forklarer endringen til en kollega — pro-drop, casual, ingen "Denne pull requesten introduserer…". Bullets i "Endringer" bruker lowercase fragmenter, mix case er fint, foretrekk "funker" / "sånn at" / "litt" / "feks" naturlig.
+
+**AI-disclosure-footer:** Legg ALLTID på footer-linja nederst i PR-body, eksakt sånn som i malen over (med `---` skille foran). Den skal stå selv om Aulon har redigert teksten manuelt — poenget er åpenhet om at AI har vært involvert, ikke at alt er AI-generert. Ikke endre formuleringen uten eksplisitt beskjed.
 
 ### Etter at draft PR er laget
 
@@ -98,7 +104,7 @@ Hvis et ticketnummer finnes, lenk til det: `Løser AB#<nummer>`.
 Etter at PR-en er konvertert fra draft til vanlig (dvs. Aulon har godkjent):
 
 1. Sett work item status til **"Fagfellevurdering"**
-2. Legg til en kommentar på work item (på norsk, etter tone-of-voice) med:
+2. Legg til en kommentar på work item (på norsk, etter `aulon-tone-of-voice`) med:
    - 1-2 setninger om hva PR-en gjør
    - En klikkbar lenke til PR-en (markdown link-format, ikke ren tekst)
 
@@ -110,9 +116,10 @@ Bruk alltid **Markdown** (ikke HTML) for tekstfelter i DevOps work items (descri
 
 ## Generelle prinsipper
 
-- All PR-beskrivelse, DevOps-kommentar og brukerrettet tekst skrives på **norsk (bokmål)** etter tone-of-voice.
+- All PR-beskrivelse, DevOps-kommentar og brukerrettet tekst skrives på **norsk (bokmål)** etter `aulon-tone-of-voice`.
 - Branch-navn og kode er alltid på **engelsk**.
-- Teknisk og kortfattet tone — men i Aulons stemme (se tone-of-voice), ikke formell.
+- Teknisk og kortfattet tone — men i Aulons stemme (se `aulon-tone-of-voice`), ikke formell.
+- AI-disclosure-footer skal alltid stå nederst i PR-body (se Steg 5 → Body-malen).
 - Ikke gå til neste workflow-steg uten eksplisitt godkjenning (gjelder branch-navn og PR-beskrivelse).
 - Hvis kontekst er utilstrekkelig: gjør kvalifiserte antakelser og marker dem med *(antatt)*.
 - Let etter ticket-nummer (`AB#1234`, `#1234`, `1234`) i commit-meldinger, branch-navn og samtalehistorikk.

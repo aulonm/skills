@@ -1,6 +1,6 @@
 ---
 name: aulon-tone-of-voice
-description: Aulons personlige tone of voice — setningsmønstre, ordvalg, språkblanding, tone. Bruk denne ALLTID når du genererer tekst som skal postes under Aulons navn: PR-titler og beskrivelser, commit-meldinger, Azure DevOps work items, ACer og kommentarer, Slack-meldinger, code review-kommentarer, eller annen skriftlig kommunikasjon. Definerer setningsmønstre, vokabular, språkregler (bokmål default, engelsk i shared libs) og hva som skal unngås. Brukes på toppen av andre workflow-skills — workflowen sier hva som skal skrives, denne sier hvordan.
+description: Aulons personlige tone of voice — setningsmønstre, ordvalg, språkblanding, tone. Bruk denne ALLTID når du genererer tekst som skal postes under Aulons navn: PR-titler og beskrivelser, commit-meldinger, Azure DevOps work items, ACer og kommentarer, Slack-meldinger, code review-kommentarer, eller annen skriftlig kommunikasjon. **Brukes alltid sammen med `devops-pr-workflow`** — så snart workflow-skillen trigger, skal denne også lastes. Definerer setningsmønstre, vokabular, språkregler (bokmål default, engelsk i shared libs) og hva som skal unngås. Workflowen sier hva som skal skrives, denne sier hvordan.
 ---
 
 # Aulons Tone of Voice
