@@ -1,0 +1,48 @@
+name: Validate skills
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate SKILL.md frontmatter
+        run: |
+          set -e
+          shopt -s nullglob
+          fail=0
+          for skill in skills/*/SKILL.md; do
+            echo "Sjekker $skill"
+
+            # Må starte med ---
+            if ! head -n 1 "$skill" | grep -q '^---$'; then
+              echo "::error file=$skill::Mangler frontmatter (skal starte med ---)"
+              fail=1
+              continue
+            fi
+
+            # Hent frontmatter-blokken (linjer mellom de to ---)
+            frontmatter=$(awk '/^---$/{f++; next} f==1{print} f==2{exit}' "$skill")
+
+            if ! echo "$frontmatter" | grep -qE '^name:[[:space:]]+'; then
+              echo "::error file=$skill::Mangler 'name' i frontmatter"
+              fail=1
+            fi
+
+            if ! echo "$frontmatter" | grep -qE '^description:[[:space:]]+'; then
+              echo "::error file=$skill::Mangler 'description' i frontmatter"
+              fail=1
+            fi
+          done
+
+          if [ "$fail" -eq 1 ]; then
+            echo "Validering feilet"
+            exit 1
+          fi
+          echo "Alle skills validerte OK"
