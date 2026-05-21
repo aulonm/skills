@@ -1,6 +1,14 @@
 ---
 name: devops-pr-workflow
-description: Aulon's komplette workflow for oppgaver fra Azure DevOps til pushet PR. Bruk denne ALLTID når du jobber med en DevOps-ticket (AB#nummer eller lenke til dev.azure.com), når du skal lage en branch/commit/PR i et OBOS-repo, eller når du skal oppdatere et work item i DevOps. Dekker hele flyten: lese ticket, plan, branching (krever godkjenning), commits, draft PR via GitHub MCP, oppdatering av work item til "Fagfellevurdering". Bruker `aulon-tone-of-voice`-skillen for all tekst som blir postet under Aulons navn — les den skillen samtidig som denne.
+description: >-
+  Aulon's komplette workflow for oppgaver fra Azure DevOps til pushet PR. Bruk
+  denne ALLTID når du jobber med en DevOps-ticket (AB#nummer eller lenke til
+  dev.azure.com), når du skal lage en branch/commit/PR i et OBOS-repo, eller
+  når du skal oppdatere et work item i DevOps. Dekker hele flyten: lese
+  ticket, plan, branching (krever godkjenning), commits, draft PR via GitHub
+  MCP, oppdatering av work item til "Fagfellevurdering". Bruker
+  `aulon-tone-of-voice`-skillen for all tekst som blir postet under Aulons
+  navn — les den skillen samtidig som denne.
 ---
 
 # DevOps + PR Workflow
